@@ -1,11 +1,12 @@
-import { connectToDatabase } from '../../../lib/mongodb'
+import { connectToDatabase } from '../../lib/mongoose'
+import { User } from '../../lib/models/user'
 
-export async function GET(request) {
+// mongoose
+export async function GET() {
   try {
-    const { mongoClient } = await connectToDatabase()
-    const db = mongoClient.db('sample_restaurants') // db name
-    const collection = db.collection('restaurants') // table
-    const results = await collection.find({}).limit(10).toArray()
+    await connectToDatabase()
+
+    const results = await User.find({}).limit(10)
 
     return new Response(JSON.stringify(results), {
       status: 200,
