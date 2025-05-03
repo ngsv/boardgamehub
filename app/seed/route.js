@@ -1,7 +1,8 @@
-const bcrypt = require('bcryptjs')
+import bcrypt from 'bcryptjs'
 import { connectToDatabase } from '../lib/mongoose'
-import { users } from '../lib/initial-data'
+import { users, boardGames } from '../lib/initial-data'
 import { User } from '../lib/models/user'
+import { BoardGame } from '../lib/models/board-games'
 
 async function seedUsers() {
   try {
@@ -29,9 +30,25 @@ async function seedUsers() {
   }
 }
 
+async function seedBoardGames() {
+  try {
+    await connectToDatabase()
+
+    const result = await BoardGame.insertMany(boardGames)
+
+    console.log(
+      `Inserted ${result.length} records into the "boardGames" collection.`
+    )
+  } catch (e) {
+    console.error('Error during seeding the "boardGames" collection', e)
+    throw e
+  }
+}
+
 export async function GET() {
   try {
     await seedUsers()
+    await seedBoardGames()
 
     return new Response(
       JSON.stringify({ message: 'Database seeded successfully' }),
