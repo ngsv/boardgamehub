@@ -1,4 +1,3 @@
-// import { Int32 } from 'mongodb'
 import mongoose from 'mongoose'
 
 const boardGameSchema = new mongoose.Schema({
@@ -11,5 +10,7 @@ const boardGameSchema = new mongoose.Schema({
   min_age: { type: Number, required: true },
   max_age: { type: Number }
 })
+
+boardGameSchema.index({ title: 1, description: 1 }, { unique: true }) // unique title + description combo
 
 export const BoardGame = mongoose.model('BoardGame', boardGameSchema)

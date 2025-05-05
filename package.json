@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed-users": "node app/seed/seed-users.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -30,5 +31,6 @@
     "typescript": "^5",
     "vercel": "^41.2.1"
   },
-  "packageManager": "pnpm@10.5.2+sha256.79a98daa90248b50815e31460790f118c56fe099113370826caa0153be6daba5"
+  "packageManager": "pnpm@10.5.2+sha256.79a98daa90248b50815e31460790f118c56fe099113370826caa0153be6daba5",
+  "type": "module"
 }

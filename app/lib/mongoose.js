@@ -32,16 +32,3 @@ export async function connectToDatabase() {
 
   return cached.conn
 }
-
-// export async function connectToDatabase() {
-//   try {
-//     if (mongoose.connection.readyState >= 1) {
-//       return
-//     }
-//     await mongoose.connect(URI)
-
-//     console.log('Connected to MongoDB Atlas!')
-//   } catch (e) {
-//     console.error(e)
-//   }
-// }
