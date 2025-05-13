@@ -1,0 +1,17 @@
+import Image from 'next/image'
+import LoginForm from '../ui/login-form'
+
+export default function LoginPage() {
+  return (
+    <main className='flex h-screen items-center justify-center'>
+      <Image
+        src='/boardgame_background.jpg'
+        fill
+        className='object-cover'
+        alt='Wallpaper background image of board game'
+      />
+
+      <LoginForm />
+    </main>
+  )
+}
