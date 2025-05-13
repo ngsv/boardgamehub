@@ -1,12 +1,27 @@
+'use client'
+
 import { roboto } from '@/app/ui/fonts'
+import { useSearchParams } from 'next/navigation'
+import { useActionState } from 'react'
+import { authenticate } from '@/actions'
 import styles from '@/app/ui/login-form.module.css'
 
 export default function LoginForm() {
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
+  const [errorMessage, formAction, isPending] = useActionState(
+    authenticate,
+    undefined
+  )
+
   return (
     <div
       className={`${roboto.className} ${styles.itemsStartOnShortScreen} bg-primary z-10 flex h-4/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
     >
-      <form className='flex w-full justify-center text-sm sm:text-base'>
+      <form
+        action={formAction}
+        className='flex w-full justify-center text-sm sm:text-base'
+      >
         <div className='flex w-9/12 flex-col space-y-3'>
           <h1 className='mb-3 text-xl font-medium sm:text-2xl'>
             Please login to continue.
@@ -37,6 +52,7 @@ export default function LoginForm() {
             </div>
           </div>
           <div>
+            <input type='hidden' name='redirectTo' value={callbackUrl} />
             <button className='mt-6 h-10 w-full rounded-lg bg-orange-900 text-white hover:bg-orange-800'>
               Login
             </button>

@@ -22,11 +22,11 @@ export default function Home() {
           <Link href='/register'>
             <Button
               buttonText='Register'
-              className='hover:bg-orange-400'
+              className='hover:bg-orange-800'
             ></Button>
           </Link>
           <Link href='/login'>
-            <Button buttonText='Login'></Button>
+            <Button buttonText='Login' className='hover:bg-orange-800'></Button>
           </Link>
         </div>
       </div>

@@ -14,8 +14,10 @@
     "mongodb": "^6.14.1",
     "mongoose": "^8.12.1",
     "next": "15.1.7",
+    "next-auth": "5.0.0-beta.28",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -31,6 +33,6 @@
     "typescript": "^5",
     "vercel": "^41.2.1"
   },
-  "packageManager": "pnpm@10.5.2+sha256.79a98daa90248b50815e31460790f118c56fe099113370826caa0153be6daba5",
+  "packageManager": "pnpm@10.10.0+sha256.fa0f513aa8191764d2b6b432420788c270f07b4f999099b65bb2010eec702a30",
   "type": "module"
 }

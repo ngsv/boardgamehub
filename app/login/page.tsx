@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Suspense } from 'react'
 import LoginForm from '../ui/login-form'
 
 export default function LoginPage() {
@@ -10,8 +11,9 @@ export default function LoginPage() {
         className='object-cover'
         alt='Wallpaper background image of board game'
       />
-
-      <LoginForm />
+      <Suspense>
+        <LoginForm />
+      </Suspense>
     </main>
   )
 }
