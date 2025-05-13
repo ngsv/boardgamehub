@@ -37,7 +37,7 @@ export default function LoginForm() {
             </div>
           </div>
           <div>
-            <button className='mt-6 h-10 w-full rounded-lg bg-orange-900 text-white'>
+            <button className='mt-6 h-10 w-full rounded-lg bg-orange-900 text-white hover:bg-orange-800'>
               Register
             </button>
           </div>

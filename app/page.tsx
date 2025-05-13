@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { inter, lusitana, dm_serif_text, roboto } from '@/app/ui/fonts'
+import Link from 'next/link'
+import { inter, roboto } from '@/app/ui/fonts'
 
 import Button from '@/app/ui/button'
 
@@ -18,8 +19,15 @@ export default function Home() {
           The source for all board game content
         </p>
         <div className={`${roboto.className} flex space-x-10 font-medium`}>
-          <Button buttonText='Register'></Button>
-          <Button buttonText='Login'></Button>
+          <Link href='/register'>
+            <Button
+              buttonText='Register'
+              className='hover:bg-orange-400'
+            ></Button>
+          </Link>
+          <Link href='/login'>
+            <Button buttonText='Login'></Button>
+          </Link>
         </div>
       </div>
       <div className='relative w-7/12 justify-end'>
