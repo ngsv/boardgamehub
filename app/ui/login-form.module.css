@@ -1,0 +1,5 @@
+@media only screen and (max-height: 539px) {
+  .itemsStartOnShortScreen {
+    align-items: start;
+  }
+}
