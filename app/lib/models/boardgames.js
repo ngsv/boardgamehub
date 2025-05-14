@@ -13,4 +13,5 @@ const boardGameSchema = new mongoose.Schema({
 
 boardGameSchema.index({ title: 1, description: 1 }, { unique: true }) // unique title + description combo
 
-export const BoardGame = mongoose.model('BoardGame', boardGameSchema)
+export const BoardGame =
+  mongoose.models.BoardGame || mongoose.model('BoardGame', boardGameSchema)

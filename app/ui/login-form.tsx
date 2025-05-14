@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { useActionState } from 'react'
 import { authenticate } from '@/actions'
 import styles from '@/app/ui/login-form.module.css'
+import { ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
 export default function LoginForm() {
   const searchParams = useSearchParams()
@@ -16,7 +17,7 @@ export default function LoginForm() {
 
   return (
     <div
-      className={`${roboto.className} ${styles.itemsStartOnShortScreen} bg-primary z-10 flex h-4/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
+      className={`${roboto.className} ${styles.itemsStartOnShortScreen} z-10 flex h-4/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl bg-primary py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
     >
       <form
         action={formAction}
@@ -53,9 +54,27 @@ export default function LoginForm() {
           </div>
           <div>
             <input type='hidden' name='redirectTo' value={callbackUrl} />
-            <button className='mt-6 h-10 w-full rounded-lg bg-orange-900 text-white hover:bg-orange-800'>
+            <button
+              className='mt-6 h-10 w-full rounded-lg bg-orange-900 text-white hover:bg-orange-800'
+              aria-disabled={isPending}
+            >
               Login
             </button>
+          </div>
+          {/* Error message */}
+          <div
+            className='flex h-8 items-end space-x-1'
+            aria-live='polite'
+            aria-atomic='true'
+          >
+            {errorMessage && (
+              <>
+                <ExclamationCircleIcon className='h-6 w-6 text-red-600' />
+                <p className='text-md font-medium text-red-600'>
+                  {errorMessage}
+                </p>
+              </>
+            )}
           </div>
         </div>
       </form>

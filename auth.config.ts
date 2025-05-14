@@ -12,9 +12,10 @@ export const authConfig = {
         if (isLoggedIn) return true
         return false // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
+        // If a logged-in user is accessing any non-dashboard page, they are redirected to /dashboard
         return Response.redirect(new URL('/dashboard', nextUrl))
       }
-      return true
+      return true // Default behaviour (public pages are accessible)
     }
   },
   providers: []
