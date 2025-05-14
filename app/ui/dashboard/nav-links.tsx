@@ -5,27 +5,29 @@ import { GlobeAltIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 export default function NavLinks() {
   return (
-    <div className={`${roboto.className} flex flex-col space-y-2 font-medium`}>
+    <div
+      className={`${roboto.className} flex w-full flex-row justify-evenly space-x-2 font-medium md:flex-col md:space-x-0 md:space-y-2`}
+    >
       <Link
         href='/'
-        className='flex h-12 items-center rounded-md bg-slate-50 pl-5 hover:bg-orange-200'
+        className='flex h-12 w-full min-w-14 items-center justify-center rounded-md bg-slate-50 hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5'
       >
         <TableCellsIcon className='w-6' />
-        <div className='ml-2'>Browse</div>
+        <div className='ml-2 hidden md:block'>Browse</div>
       </Link>
       <Link
         href='/'
-        className='flex h-12 items-center rounded-md bg-slate-50 pl-5 hover:bg-orange-200'
+        className='flex h-12 w-full min-w-14 items-center justify-center rounded-md bg-slate-50 hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5'
       >
         <GlobeAltIcon className='w-6' />
-        <div className='ml-2'>Explore</div>
+        <div className='ml-2 hidden md:block'>Explore</div>
       </Link>
       <Link
         href='/'
-        className='flex h-12 items-center rounded-md bg-slate-50 pl-5 hover:bg-orange-200'
+        className='flex h-12 w-full min-w-14 items-center justify-center rounded-md bg-slate-50 hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5'
       >
         <MagnifyingGlassIcon className='w-6' />
-        <div className='ml-2'>Search</div>
+        <div className='ml-2 hidden md:block'>Search</div>
       </Link>
     </div>
   )
