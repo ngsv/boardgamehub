@@ -2,6 +2,7 @@ import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import { z } from 'zod'
 import bcrypt from 'bcryptjs'
+
 import { connectToDatabase } from '@/app/lib/mongoose'
 import type { User } from '@/app/lib/definitions'
 import { User as UserModel } from '@/app/lib/models/user'
