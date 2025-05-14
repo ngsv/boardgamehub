@@ -1,10 +1,13 @@
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
+
 import { roboto } from '@/app/ui/fonts'
+
 import styles from '@/app/ui/register-form.module.css'
 
 export default function RegisterForm() {
   return (
     <div
-      className={`${roboto.className} ${styles.itemsStartOnShortScreen} bg-primary z-10 flex h-5/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
+      className={`${roboto.className} ${styles.itemsStartOnShortScreen} z-10 flex h-5/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl bg-primary py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
     >
       <form className='flex w-full justify-center text-sm sm:text-base'>
         <div className='flex w-9/12 flex-col space-y-3'>
@@ -20,7 +23,7 @@ export default function RegisterForm() {
                   name='firstName'
                   placeholder='Enter first name'
                   required
-                  className='mt-2 h-10 w-full rounded-lg px-3'
+                  className='mt-2 h-10 w-full rounded-lg px-3 focus:border focus:border-black focus:outline-none'
                 />
               </div>
             </div>
@@ -32,7 +35,7 @@ export default function RegisterForm() {
                   name='lastName'
                   placeholder='Enter last name'
                   required
-                  className='mt-2 h-10 w-full rounded-lg px-3'
+                  className='mt-2 h-10 w-full rounded-lg px-3 focus:border focus:border-black focus:outline-none'
                 />
               </div>
             </div>
@@ -45,7 +48,7 @@ export default function RegisterForm() {
                 name='username'
                 placeholder='Enter username'
                 required
-                className='mt-2 h-10 w-full rounded-lg px-3'
+                className='mt-2 h-10 w-full rounded-lg px-3 focus:border focus:border-black focus:outline-none'
               />
             </div>
           </div>
@@ -57,7 +60,7 @@ export default function RegisterForm() {
                 name='email'
                 placeholder='Enter your email address'
                 required
-                className='mt-2 h-10 w-full rounded-lg px-3'
+                className='mt-2 h-10 w-full rounded-lg px-3 focus:border focus:border-black focus:outline-none'
               />
             </div>
           </div>
@@ -70,13 +73,14 @@ export default function RegisterForm() {
                 placeholder='Enter password'
                 minLength={8}
                 required
-                className='mt-2 h-10 w-full rounded-lg px-3'
+                className='mt-2 h-10 w-full rounded-lg px-3 focus:border focus:border-black focus:outline-none'
               />
             </div>
           </div>
           <div>
-            <button className='mt-6 h-10 w-full rounded-lg bg-orange-900 text-white hover:bg-orange-800'>
-              Register
+            <button className='mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800'>
+              <div className='flex items-center'>Register</div>
+              <ArrowRightIcon className='w-5' />
             </button>
           </div>
         </div>

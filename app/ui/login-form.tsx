@@ -1,11 +1,18 @@
 'use client'
 
-import { roboto } from '@/app/ui/fonts'
 import { useSearchParams } from 'next/navigation'
 import { useActionState } from 'react'
+import {
+  ExclamationCircleIcon,
+  ArrowRightIcon,
+  AtSymbolIcon,
+  KeyIcon
+} from '@heroicons/react/24/outline'
+
+import { roboto } from '@/app/ui/fonts'
 import { authenticate } from '@/actions'
+
 import styles from '@/app/ui/login-form.module.css'
-import { ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
 export default function LoginForm() {
   const searchParams = useSearchParams()
@@ -25,40 +32,43 @@ export default function LoginForm() {
       >
         <div className='flex w-9/12 flex-col space-y-3'>
           <h1 className='mb-3 text-xl font-medium sm:text-2xl'>
-            Please login to continue.
+            Please log in to continue.
           </h1>
           <div>
             <label htmlFor='email'>Email</label>
-            <div>
+            <div className='relative'>
               <input
                 type='email'
                 name='email'
                 placeholder='Enter your email address'
                 required
-                className='mt-2 h-10 w-full rounded-lg px-3'
+                className='peer mt-2 h-10 w-full rounded-lg border border-gray-200 px-3 pl-10 focus:border-black focus:outline-none'
               />
+              <AtSymbolIcon className='absolute left-3 top-5 w-4 text-gray-500 peer-focus:text-gray-900' />
             </div>
           </div>
           <div>
             <label htmlFor='password'>Password</label>
-            <div>
+            <div className='relative'>
               <input
                 type='password'
                 name='password'
                 placeholder='Enter password'
                 minLength={8}
                 required
-                className='mt-2 h-10 w-full rounded-lg px-3'
+                className='peer mt-2 h-10 w-full rounded-lg border border-gray-200 px-3 pl-10 focus:border-black focus:outline-none'
               />
+              <KeyIcon className='absolute left-3 top-5 w-4 text-gray-500 peer-focus:text-gray-900' />
             </div>
           </div>
           <div>
             <input type='hidden' name='redirectTo' value={callbackUrl} />
             <button
-              className='mt-6 h-10 w-full rounded-lg bg-orange-900 text-white hover:bg-orange-800'
+              className='mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800'
               aria-disabled={isPending}
             >
-              Login
+              <div className='flex items-center'>Log In</div>
+              <ArrowRightIcon className='w-5' />
             </button>
           </div>
           {/* Error message */}
