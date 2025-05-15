@@ -7,7 +7,7 @@ import Button from '@/app/ui/button'
 export default function Home() {
   return (
     <main className='flex h-screen w-screen'>
-      <div className='max-h-sm bg-primary flex h-full w-5/12 max-w-4xl flex-col items-center justify-center text-white'>
+      <div className='max-h-sm flex h-full w-5/12 max-w-4xl flex-col items-center justify-center bg-primary text-white'>
         <h1
           className={`${inter.className} mb-6 text-5xl font-bold antialiased`}
         >

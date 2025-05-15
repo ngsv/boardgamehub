@@ -8,3 +8,11 @@ export type User = {
   last_name: string
   email: string
 }
+
+export interface NewUser {
+  firstName: string
+  lastName: string
+  username: string
+  email: string
+  password: string
+}

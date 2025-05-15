@@ -13,7 +13,7 @@ async function getUser(email: string): Promise<User | null | undefined> {
   try {
     await connectToDatabase()
 
-    const user = UserModel.findOne({ email: email })
+    const user = await UserModel.findOne({ email: email })
     return user
   } catch (error) {
     console.error('Failed to fetch user: ', error)

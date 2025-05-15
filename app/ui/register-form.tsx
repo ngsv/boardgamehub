@@ -1,15 +1,24 @@
+'use client'
+
+import { useActionState } from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
-import { roboto } from '@/app/ui/fonts'
+import { registerUser } from '@/actions'
 
+import { roboto } from '@/app/ui/fonts'
 import styles from '@/app/ui/register-form.module.css'
 
 export default function RegisterForm() {
+  const [state, formAction, isPending] = useActionState(registerUser, undefined)
+
   return (
     <div
       className={`${roboto.className} ${styles.itemsStartOnShortScreen} z-10 flex h-5/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl bg-primary py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
     >
-      <form className='flex w-full justify-center text-sm sm:text-base'>
+      <form
+        action={formAction}
+        className='flex w-full justify-center text-sm sm:text-base'
+      >
         <div className='flex w-9/12 flex-col space-y-3'>
           <h1 className='mb-3 text-xl font-medium sm:text-2xl'>
             Please register to continue.
