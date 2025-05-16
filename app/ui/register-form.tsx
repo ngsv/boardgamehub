@@ -1,7 +1,10 @@
 'use client'
 
 import { useActionState } from 'react'
-import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import {
+  ArrowRightIcon,
+  ExclamationCircleIcon
+} from '@heroicons/react/24/outline'
 
 import { registerUser } from '@/actions'
 
@@ -9,7 +12,10 @@ import { roboto } from '@/app/ui/fonts'
 import styles from '@/app/ui/register-form.module.css'
 
 export default function RegisterForm() {
-  const [state, formAction, isPending] = useActionState(registerUser, undefined)
+  const [errorMessage, formAction, isPending] = useActionState(
+    registerUser,
+    undefined
+  )
 
   return (
     <div
@@ -56,6 +62,8 @@ export default function RegisterForm() {
                 type='text'
                 name='username'
                 placeholder='Enter username'
+                minLength={4}
+                maxLength={20}
                 required
                 className='mt-2 h-10 w-full rounded-lg px-3 focus:border focus:border-black focus:outline-none'
               />
@@ -81,16 +89,35 @@ export default function RegisterForm() {
                 name='password'
                 placeholder='Enter password'
                 minLength={8}
+                maxLength={100}
                 required
                 className='mt-2 h-10 w-full rounded-lg px-3 focus:border focus:border-black focus:outline-none'
               />
             </div>
           </div>
           <div>
-            <button className='mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800'>
+            <button
+              className='mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800'
+              aria-disabled={isPending}
+            >
               <div className='flex items-center'>Register</div>
               <ArrowRightIcon className='w-5' />
             </button>
+          </div>
+          {/* Error Message */}
+          <div
+            className='flex h-8 items-end space-x-1'
+            aria-live='polite'
+            aria-atomic='true'
+          >
+            {errorMessage && (
+              <>
+                <ExclamationCircleIcon className='h-6 w-6 text-red-600' />
+                <p className='text-md font-normal text-red-600'>
+                  {errorMessage}
+                </p>
+              </>
+            )}
           </div>
         </div>
       </form>

@@ -80,7 +80,7 @@ export default function LoginForm() {
             {errorMessage && (
               <>
                 <ExclamationCircleIcon className='h-6 w-6 text-red-600' />
-                <p className='text-md font-medium text-red-600'>
+                <p className='text-md font-normal text-red-600'>
                   {errorMessage}
                 </p>
               </>

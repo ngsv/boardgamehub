@@ -1,14 +1,11 @@
 'use server'
 
-import { z } from 'zod'
 import mongoose from 'mongoose'
-import bcrypt from 'bcryptjs'
+import { AuthError } from 'next-auth'
 
 import { signIn } from '@/auth'
-import { AuthError } from 'next-auth'
-import { connectToDatabase } from './app/lib/mongoose'
-import type { User, NewUser } from './app/lib/definitions'
-import { User as UserModel } from './app/lib/models/user'
+
+import { getUser, insertUser } from './app/lib/utils/queries'
 
 export async function authenticate(
   prevState: string | undefined,
@@ -29,43 +26,6 @@ export async function authenticate(
   }
 }
 
-// Checks if a user already exists with that email address
-async function getUser(email: string): Promise<User | null | undefined> {
-  try {
-    await connectToDatabase()
-    const user = await UserModel.findOne({ email: email })
-    return user
-  } catch (error) {
-    console.error('Error fetching user with email address: ' + email)
-  }
-}
-
-// Insert user into DB
-async function insertUser(formData: FormData) {
-  try {
-    await connectToDatabase()
-
-    let filteredObject = Object.fromEntries(
-      [...formData.entries()].filter(([key]) => !key.startsWith('$ACTION'))
-    )
-    const hashedpassword = await bcrypt.hash(
-      filteredObject.password as string,
-      10
-    )
-    const newUser = {
-      first_name: filteredObject.firstName,
-      last_name: filteredObject.lastName,
-      username: filteredObject.username,
-      email: filteredObject.email,
-      password: hashedpassword
-    }
-    console.log(newUser)
-    await UserModel.insertOne({ ...newUser })
-  } catch (error) {
-    console.error('Error inserting user into database: ' + error)
-  }
-}
-
 export async function registerUser(
   prevState: string | undefined,
   formData: FormData
@@ -80,9 +40,9 @@ export async function registerUser(
       return 'Email address already exists.'
     }
     // Insert into database if email doesn't exist
-    insertUser(formData)
+    await insertUser(formData)
   } catch (error) {
-    console.log('Registration error: ' + error)
+    console.error('Registration error: ' + error)
     return 'Something went wrong during registration.'
   }
 }
