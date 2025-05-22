@@ -24,6 +24,7 @@ export default function RegisterForm() {
     >
       <form
         action={formAction}
+        method='POST'
         className='flex w-full justify-center text-sm sm:text-base'
       >
         <div className='flex w-9/12 flex-col space-y-3'>

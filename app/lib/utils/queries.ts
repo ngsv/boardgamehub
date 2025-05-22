@@ -5,13 +5,32 @@ import { User as UserModel } from '../models/user'
 import { User } from '../definitions'
 
 // Checks if a user already exists with that email address
-export async function getUser(email: string): Promise<User | null | undefined> {
+export async function getUserByEmail(
+  email: string
+): Promise<User | null | undefined> {
   try {
     await connectToDatabase()
     const user = await UserModel.findOne({ email: email })
     return user
   } catch (error) {
-    console.error('Error fetching user with email address: ' + email)
+    console.error(
+      'Error fetching user with email address ' + email + ': ' + error
+    )
+  }
+}
+
+// Checks if a user already exists with that username
+export async function getUserByUsername(
+  username: string
+): Promise<User | null | undefined> {
+  try {
+    await connectToDatabase()
+    const user = await UserModel.findOne({ username: username })
+    return user
+  } catch (error) {
+    console.error(
+      'Error fetching user with username ' + username + ': ' + error
+    )
   }
 }
 
@@ -20,7 +39,7 @@ export async function insertUser(formData: FormData) {
   try {
     await connectToDatabase()
 
-    let filteredObject = Object.fromEntries(
+    const filteredObject = Object.fromEntries(
       [...formData.entries()].filter(([key]) => !key.startsWith('$ACTION'))
     )
 
