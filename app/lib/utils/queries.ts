@@ -25,8 +25,8 @@ export async function insertUser(formData: FormData) {
     )
 
     const schemaRegister = z.object({
-      first_name: z.string(),
-      last_name: z.string(),
+      firstName: z.string(),
+      lastName: z.string(),
       username: z
         .string()
         .min(4, { message: 'Username must be between 4 and 20 characters.' })

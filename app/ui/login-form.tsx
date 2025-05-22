@@ -8,6 +8,7 @@ import {
   AtSymbolIcon,
   KeyIcon
 } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
 
 import { roboto } from '@/app/ui/fonts'
 import { authenticate } from '@/actions'
@@ -64,7 +65,10 @@ export default function LoginForm() {
           <div>
             <input type='hidden' name='redirectTo' value={callbackUrl} />
             <button
-              className='mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800'
+              className={clsx(
+                'mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800',
+                isPending ? 'opacity-50 aria-disabled:cursor-not-allowed' : ''
+              )}
               aria-disabled={isPending}
             >
               <div className='flex items-center'>Log In</div>

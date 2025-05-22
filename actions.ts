@@ -39,6 +39,7 @@ export async function registerUser(
     if (user instanceof mongoose.Document) {
       return 'Email address already exists.'
     }
+    console.log('Email ok')
     // Insert into database if email doesn't exist
     await insertUser(formData)
   } catch (error) {
