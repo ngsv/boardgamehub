@@ -30,30 +30,37 @@ export async function authenticate(
   }
 }
 
-export async function registerUser(
-  prevState: string | undefined,
-  formData: FormData
-) {
+export async function registerUser(prevState: {}, formData: FormData) {
   try {
     const filteredObject = Object.fromEntries(
       [...formData.entries()].filter(([key]) => !key.startsWith('$ACTION'))
     )
+
     // Checks if email address exists
     const newEmail = filteredObject.email as string
     let user = await getUserByEmail(newEmail)
     if (user instanceof mongoose.Document) {
-      return 'Email address already exists.'
+      // return 'Email address already exists.'
+      return { success: false, error: 'Email address already exists.' }
     }
+
     // Checks if username exists
     const newUsername = filteredObject.username as string
     user = await getUserByUsername(newUsername)
     if (user instanceof mongoose.Document) {
-      return 'Username already exists.'
+      // return 'Username already exists.'
+      return { success: false, error: 'Username already exists.' }
     }
-    // Insert into database if email doesn't exist
+
+    // Insert into database if email and username doesn't exist
     await insertUser(formData)
+    return { success: true, error: null }
   } catch (error) {
     console.error('Registration error: ' + error)
-    return 'Something went wrong during registration.'
+    // return 'Something went wrong during registration.'
+    return {
+      success: false,
+      error: 'Something went wrong during registration.'
+    }
   }
 }

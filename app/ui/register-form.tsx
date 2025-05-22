@@ -8,15 +8,22 @@ import {
 import clsx from 'clsx'
 
 import { registerUser } from '@/actions'
+import RegisterOverlay from './register-overlay'
 
 import { roboto } from '@/app/ui/fonts'
 import styles from '@/app/ui/register-form.module.css'
 
 export default function RegisterForm() {
-  const [errorMessage, formAction, isPending] = useActionState(
-    registerUser,
-    undefined
-  )
+  const [state, formAction, isPending] = useActionState(registerUser, {
+    success: false,
+    error: null
+  })
+
+  // useEffect(() => {
+  //   if (state.success) {
+  //     window.location.href = '/login'
+  //   }
+  // }, [state.success])
 
   return (
     <div
@@ -25,7 +32,7 @@ export default function RegisterForm() {
       <form
         action={formAction}
         method='POST'
-        className='flex w-full justify-center text-sm sm:text-base'
+        className={`flex w-full justify-center text-sm sm:text-base ${state.success && 'hidden'}`}
       >
         <div className='flex w-9/12 flex-col space-y-3'>
           <h1 className='mb-3 text-xl font-medium sm:text-2xl'>
@@ -115,17 +122,18 @@ export default function RegisterForm() {
             aria-live='polite'
             aria-atomic='true'
           >
-            {errorMessage && (
+            {state.error && (
               <>
                 <ExclamationCircleIcon className='h-6 w-6 text-red-600' />
                 <p className='text-md font-normal text-red-600'>
-                  {errorMessage}
+                  {state.error}
                 </p>
               </>
             )}
           </div>
         </div>
       </form>
+      {state.success && <RegisterOverlay />}
     </div>
   )
 }

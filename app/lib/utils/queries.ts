@@ -76,5 +76,6 @@ export async function insertUser(formData: FormData) {
     }
   } catch (error) {
     console.error('Error inserting user into database: ' + error)
+    throw error
   }
 }

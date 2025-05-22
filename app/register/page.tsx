@@ -2,6 +2,7 @@ import Image from 'next/image'
 import RegisterForm from '../ui/register-form'
 
 export default function RegisterPage() {
+  // const
   return (
     <main className='flex h-screen items-center justify-center'>
       <Image
