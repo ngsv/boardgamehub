@@ -3,7 +3,8 @@
 import { useActionState } from 'react'
 import {
   ArrowRightIcon,
-  ExclamationCircleIcon
+  ExclamationCircleIcon,
+  ArrowUturnLeftIcon
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
@@ -19,22 +20,23 @@ export default function RegisterForm() {
     error: null
   })
 
-  // useEffect(() => {
-  //   if (state.success) {
-  //     window.location.href = '/login'
-  //   }
-  // }, [state.success])
+  const handleBack = () => {
+    window.location.href = '/'
+  }
 
   return (
     <div
-      className={`${roboto.className} ${styles.itemsStartOnShortScreen} z-10 flex h-5/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl bg-primary py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
+      className={`${roboto.className} ${styles.itemsStartOnShortScreen} relative z-10 flex h-5/6 w-1/2 max-w-screen-md items-center justify-center overflow-y-auto rounded-2xl bg-primary py-9 max-[1023px]:w-3/4 max-[434px]:w-full`}
     >
+      <button onClick={handleBack}>
+        <ArrowUturnLeftIcon className='hover absolute left-4 top-5 w-6 hover:scale-110' />
+      </button>
       <form
         action={formAction}
         method='POST'
         className={`flex w-full justify-center text-sm sm:text-base ${state.success && 'hidden'}`}
       >
-        <div className='flex w-9/12 flex-col space-y-3'>
+        <div className='flex w-9/12 flex-col space-y-3 pt-8'>
           <h1 className='mb-3 text-xl font-medium sm:text-2xl'>
             Please register to continue.
           </h1>
