@@ -16,8 +16,10 @@ export default function NavLinks() {
       <Link
         href='/dashboard'
         className={clsx(
-          'flex h-12 w-full min-w-14 items-center justify-center rounded-md bg-slate-50 hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5',
-          { 'bg-orange-200 text-primary': pathname === '/dashboard' }
+          'flex h-12 w-full min-w-14 items-center justify-center rounded-md hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5',
+          pathname === '/dashboard'
+            ? 'bg-orange-200 text-primary'
+            : 'bg-slate-50'
         )}
       >
         <GlobeAltIcon className='w-6' />
@@ -26,8 +28,10 @@ export default function NavLinks() {
       <Link
         href='/dashboard/browse'
         className={clsx(
-          'flex h-12 w-full min-w-14 items-center justify-center rounded-md bg-slate-50 hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5',
-          { 'bg-orange-200 text-primary': pathname === '/dashboard/browse' }
+          'flex h-12 w-full min-w-14 items-center justify-center rounded-md hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5',
+          pathname === '/dashboard/browse'
+            ? 'bg-orange-200 text-primary'
+            : 'bg-slate-50'
         )}
       >
         <TableCellsIcon className='w-6' />
@@ -36,8 +40,10 @@ export default function NavLinks() {
       <Link
         href='/dashboard/search'
         className={clsx(
-          'flex h-12 w-full min-w-14 items-center justify-center rounded-md bg-slate-50 hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5',
-          { 'bg-orange-200 text-primary': pathname === '/dashboard/search' }
+          'flex h-12 w-full min-w-14 items-center justify-center rounded-md hover:bg-orange-200 hover:text-primary md:justify-start md:pl-5',
+          pathname === '/dashboard/search'
+            ? 'bg-orange-200 text-primary'
+            : 'bg-slate-50'
         )}
       >
         <MagnifyingGlassIcon className='w-6' />

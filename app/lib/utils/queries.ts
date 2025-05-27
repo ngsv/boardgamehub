@@ -82,21 +82,20 @@ export async function insertUser(formData: FormData) {
 }
 
 // Recently added board games
-// export async function recentlyAddedGames() {
-//   try {
-//     await connectToDatabase()
-//     let recentGames = await BoardGame.find({})
-//       .sort({ createdAt: -1 })
-//       .limit(5)
-//       .lean()
+export async function recentlyAddedGames() {
+  try {
+    await connectToDatabase()
+    const recentGames = await BoardGame.find({})
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .lean()
 
-//     recentGames = JSON.parse(JSON.stringify(recentGames))
-//     // console.log(recentGames)
-//     // console.log(Array.isArray(recentGames))
-//     return recentGames
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
+    console.log(recentGames)
+
+    return recentGames
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 // Staff's picks board games

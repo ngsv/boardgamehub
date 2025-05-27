@@ -1,20 +1,16 @@
-// import { useEffect } from 'react'
-import { roboto } from '../ui/fonts'
-// import { recentlyAddedGames } from '../lib/utils/queries'
+import BoardGameList from '../ui/BoardGameList/boardgame-list'
 
 export default async function Dashboard() {
-  // const recentlyAdded = await recentlyAddedGames()
-
   return (
     <div>
       <h1 className='text-4xl font-medium'>Explore</h1>
 
       <div>
         <h2 className='text-xl'>Recently Added</h2>
-        {/* <div>{recentlyAdded}</div> */}
+        <BoardGameList />
       </div>
       <div>
-        <h2 className='text-xl'>Staff's Picks</h2>
+        <h2 className='text-xl'>{`Staff's Picks`}</h2>
       </div>
     </div>
   )
