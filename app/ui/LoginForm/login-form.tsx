@@ -14,7 +14,7 @@ import clsx from 'clsx'
 import { roboto } from '@/app/ui/fonts'
 import { authenticate } from '@/actions'
 
-import styles from '@/app/ui/login-form.module.css'
+import styles from '@/app/ui/LoginForm/login-form.module.css'
 
 export default function LoginForm() {
   const searchParams = useSearchParams()

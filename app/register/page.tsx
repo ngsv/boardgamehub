@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import RegisterForm from '../ui/register-form'
+import RegisterForm from '../ui/RegisterForm/register-form'
 
 export default function RegisterPage() {
   return (

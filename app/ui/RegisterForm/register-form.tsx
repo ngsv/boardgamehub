@@ -12,7 +12,7 @@ import { registerUser } from '@/actions'
 import RegisterOverlay from './register-overlay'
 
 import { roboto } from '@/app/ui/fonts'
-import styles from '@/app/ui/register-form.module.css'
+import styles from '@/app/ui/RegisterForm/register-form.module.css'
 
 export default function RegisterForm() {
   const [state, formAction, isPending] = useActionState(registerUser, {

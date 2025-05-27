@@ -2,6 +2,7 @@ import { z } from 'zod'
 import bcrypt from 'bcryptjs'
 import { connectToDatabase } from '../mongoose'
 import { User as UserModel } from '../models/user'
+import { BoardGame } from '../models/boardgames'
 import { User } from '../definitions'
 
 // Checks if a user already exists with that email address
@@ -79,3 +80,23 @@ export async function insertUser(formData: FormData) {
     throw error
   }
 }
+
+// Recently added board games
+// export async function recentlyAddedGames() {
+//   try {
+//     await connectToDatabase()
+//     let recentGames = await BoardGame.find({})
+//       .sort({ createdAt: -1 })
+//       .limit(5)
+//       .lean()
+
+//     recentGames = JSON.parse(JSON.stringify(recentGames))
+//     // console.log(recentGames)
+//     // console.log(Array.isArray(recentGames))
+//     return recentGames
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
+
+// Staff's picks board games
