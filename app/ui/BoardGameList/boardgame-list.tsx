@@ -4,7 +4,7 @@ import { recentlyAddedGames } from '@/app/lib/utils/queries'
 export default async function BoardGameList() {
   const boardgames = await recentlyAddedGames()
   return (
-    <div className='flex h-72 border-2 border-black'>
+    <div className='flex h-auto justify-between border-2 border-black'>
       {boardgames?.map(game => (
         <BoardGameItem
           key={game._id as string}
@@ -16,6 +16,7 @@ export default async function BoardGameList() {
           max_playing_time={game.max_playing_time}
           min_age={game.min_age}
           max_age={game.max_age}
+          image={game.image}
         />
       ))}
     </div>

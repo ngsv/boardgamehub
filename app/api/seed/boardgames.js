@@ -15,7 +15,7 @@ export async function seedBoardGames() {
       message: `✅ Inserted ${result.length} records into the 'boardgames' collection.`
     }
   } catch (e) {
-    console.error('Error during seeding the "users" collection', e)
+    console.error('Error during seeding the "boardgames" collection', e)
     return { success: false, error: e.message }
   }
 }

@@ -37,7 +37,8 @@ const boardGames = [
     max_players: 4,
     min_playing_time: 90,
     max_playing_time: 150,
-    min_age: 14
+    min_age: 14,
+    image: '/ark-nova.webp'
   },
   {
     title: 'Wingspan',
@@ -51,7 +52,8 @@ const boardGames = [
     max_players: 5,
     min_playing_time: 40,
     max_playing_time: 70,
-    min_age: 10
+    min_age: 10,
+    image: '/wingspan.webp'
   },
   {
     title: 'Everdell',
@@ -65,7 +67,8 @@ const boardGames = [
     max_players: 4,
     min_playing_time: 40,
     max_playing_time: 80,
-    min_age: 10
+    min_age: 10,
+    image: '/everdell.webp'
   },
   {
     title: 'Food Chain Magnate',
@@ -75,7 +78,8 @@ const boardGames = [
     max_players: 5,
     min_playing_time: 120,
     max_playing_time: 240,
-    min_age: 14
+    min_age: 14,
+    image: '/food-chain-magnate.webp'
   },
   {
     title: 'Viticulture Essential Edition',
@@ -87,7 +91,8 @@ const boardGames = [
     max_players: 6,
     min_playing_time: 45,
     max_playing_time: 90,
-    min_age: 13
+    min_age: 13,
+    image: '/viticulture-essential-edition.webp'
   },
   {
     title: 'Azul',
@@ -97,7 +102,8 @@ const boardGames = [
     max_players: 4,
     min_playing_time: 30,
     max_playing_time: 45,
-    min_age: 8
+    min_age: 8,
+    image: '/azul.webp'
   },
   {
     title: 'Root',
@@ -109,7 +115,8 @@ const boardGames = [
     max_players: 4,
     min_playing_time: 60,
     max_playing_time: 90,
-    min_age: 10
+    min_age: 10,
+    image: '/root.webp'
   },
   {
     title: 'Catan',
@@ -121,7 +128,8 @@ const boardGames = [
     max_players: 4,
     min_playing_time: 60,
     max_playing_time: 120,
-    min_age: 10
+    min_age: 10,
+    image: '/catan.webp'
   },
   {
     title: '7 Wonders',
@@ -133,7 +141,8 @@ const boardGames = [
     max_players: 7,
     min_playing_time: 30,
     max_playing_time: 30,
-    min_age: 10
+    min_age: 10,
+    image: '/7-wonders.webp'
   },
   {
     title: 'Ticket to Ride',
@@ -146,7 +155,8 @@ const boardGames = [
     max_players: 5,
     min_playing_time: 30,
     max_playing_time: 60,
-    min_age: 8
+    min_age: 8,
+    image: '/ticket-to-ride.webp'
   }
 ]
 

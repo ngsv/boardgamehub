@@ -90,7 +90,7 @@ export async function recentlyAddedGames() {
       .limit(5)
       .lean()
 
-    console.log(recentGames)
+    // console.log(recentGames)
 
     return recentGames
   } catch (error) {
