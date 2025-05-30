@@ -3,14 +3,16 @@ import BoardGameList from '../ui/BoardGameList/boardgame-list'
 export default async function Dashboard() {
   return (
     <div>
-      <h1 className='text-4xl font-medium'>Explore</h1>
+      <h1 className='mb-5 text-4xl font-medium'>Explore</h1>
 
-      <div>
-        <h2 className='text-xl'>Recently Added</h2>
-        <BoardGameList />
+      <div className='rounded-xl bg-slate-50 p-2'>
+        <h2 className='p-2 text-xl font-medium'>{`Staff's Picks`}</h2>
+        <BoardGameList list='staff' />
       </div>
-      <div>
-        <h2 className='text-xl'>{`Staff's Picks`}</h2>
+
+      <div className='mt-4 rounded-xl bg-slate-50 p-2'>
+        <h2 className='p-2 text-xl font-medium'>Recently Added</h2>
+        <BoardGameList list='recent' />
       </div>
     </div>
   )

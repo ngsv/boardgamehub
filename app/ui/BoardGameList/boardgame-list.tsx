@@ -1,10 +1,20 @@
 import BoardGameItem from '../BoardGameItem/boardgame-item'
-import { recentlyAddedGames } from '@/app/lib/utils/queries'
+import { recentlyAddedGames, staffPicks } from '@/app/lib/utils/queries'
 
-export default async function BoardGameList() {
-  const boardgames = await recentlyAddedGames()
+type BoardGameListProps = {
+  list: string
+}
+
+export default async function BoardGameList({ list }: BoardGameListProps) {
+  let boardgames
+  if (list == 'recent') {
+    boardgames = await recentlyAddedGames()
+  } else if (list == 'staff') {
+    boardgames = await staffPicks()
+  }
+
   return (
-    <div className='flex h-auto justify-between border-2 border-black'>
+    <div className='flex h-auto justify-between'>
       {boardgames?.map(game => (
         <BoardGameItem
           key={game._id as string}

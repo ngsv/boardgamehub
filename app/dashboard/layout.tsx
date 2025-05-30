@@ -8,11 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className='w-full md:w-64'>
         <SideNav />
       </div>
-      <div
-        className={`${roboto.className} h-full w-full border-2 border-black p-8`}
-      >
-        {children}
-      </div>
+      <div className={`${roboto.className} h-full w-full p-6`}>{children}</div>
     </div>
   )
 }

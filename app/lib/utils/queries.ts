@@ -4,6 +4,7 @@ import { connectToDatabase } from '../mongoose'
 import { User as UserModel } from '../models/user'
 import { BoardGame } from '../models/boardgames'
 import { User } from '../definitions'
+import { connect } from 'http2'
 
 // Checks if a user already exists with that email address
 export async function getUserByEmail(
@@ -90,8 +91,6 @@ export async function recentlyAddedGames() {
       .limit(5)
       .lean()
 
-    // console.log(recentGames)
-
     return recentGames
   } catch (error) {
     console.error(error)
@@ -99,3 +98,16 @@ export async function recentlyAddedGames() {
 }
 
 // Staff's picks board games
+export async function staffPicks() {
+  try {
+    await connectToDatabase()
+    const staffPicks = await BoardGame.find({})
+      .sort({ createdAt: 1 })
+      .limit(5)
+      .lean()
+
+    return staffPicks
+  } catch (error) {
+    console.error(error)
+  }
+}
