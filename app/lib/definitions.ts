@@ -10,7 +10,7 @@ export type User = {
 }
 
 export type BoardGame = {
-  _id: ObjectId
+  _id: string
   title: string
   description: string
   image: string

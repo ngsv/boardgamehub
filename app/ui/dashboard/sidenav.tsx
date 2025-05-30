@@ -8,7 +8,7 @@ import { lusitana, roboto } from '../fonts'
 
 export default function SideNav() {
   return (
-    <div className='round-lg flex h-auto w-full flex-col px-3 py-4 md:h-full md:w-64'>
+    <div className='round-lg flex w-full flex-col px-3 py-4 md:h-full md:w-64'>
       <Link
         href='/'
         className='flex h-20 items-center rounded-md bg-primary pl-5 text-3xl font-bold md:h-2/6 md:max-h-48 md:min-h-20 md:justify-center md:pl-0'
