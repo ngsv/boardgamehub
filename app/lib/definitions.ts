@@ -8,3 +8,16 @@ export type User = {
   last_name: string
   email: string
 }
+
+export type BoardGame = {
+  _id: ObjectId
+  title: string
+  description: string
+  image: string
+  min_players: number
+  max_players: number
+  min_playing_time: number
+  max_playing_time: number
+  min_age: number
+  max_age?: number
+}

@@ -1,4 +1,4 @@
-import BoardGameList from '../ui/BoardGameList/boardgame-list'
+import BoardGameList from '../ui/Explore/BoardGameList/boardgame-list'
 
 export default async function Dashboard() {
   return (
