@@ -45,14 +45,14 @@ export default function BoardGameTable() {
 
   return (
     <div className=''>
-      <table className='w-full table-auto rounded-lg bg-slate-50'>
-        <thead className='h-9'>
+      <table className='w-full table-auto border-separate border-spacing-3 rounded-lg bg-slate-50'>
+        <thead>
           <tr className='w-full'>
             <th></th>
             <th className='pl-4'>
               <button
                 onClick={() => handleSort('title')}
-                className='flex font-medium hover:cursor-pointer'
+                className='flex text-lg font-medium hover:cursor-pointer hover:underline'
               >
                 Title
                 {sortBy == 'title-asc' && (

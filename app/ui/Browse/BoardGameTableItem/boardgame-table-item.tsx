@@ -19,7 +19,9 @@ export default function BoardGameTableItem({
           className='rounded-lg object-cover'
         />
       </td>
-      <td className='pl-4'>{title}</td>
+      <td className='pl-4'>
+        <span className='hover:cursor-pointer hover:underline'>{title}</span>
+      </td>
     </>
   )
 }
