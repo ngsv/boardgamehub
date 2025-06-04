@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <SideNav />
       </div>
       <div
-        className={`${roboto.className} fixed bottom-6 top-44 w-full overflow-y-scroll px-4 md:bottom-4 md:left-64 md:right-0 md:top-4 md:w-auto`}
+        className={`${roboto.className} fixed bottom-6 top-44 w-full overflow-y-scroll px-4 md:bottom-4 md:left-64 md:right-0 md:top-8 md:w-auto`}
       >
         {children}
       </div>

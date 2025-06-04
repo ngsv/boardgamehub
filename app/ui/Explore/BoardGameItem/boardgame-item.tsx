@@ -18,7 +18,6 @@ type BoardGameItemProps = {
 
 export default function BoardGameItem({
   title,
-  // description,
   min_players,
   max_players,
   min_playing_time,

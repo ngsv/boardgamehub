@@ -4,6 +4,7 @@ import { connectToDatabase } from '../mongoose'
 import { User as UserModel } from '../models/user'
 import { BoardGame } from '../models/boardgames'
 import { User } from '../definitions'
+import { connect } from 'http2'
 
 // Checks if a user already exists with that email address
 export async function getUserByEmail(
@@ -142,6 +143,17 @@ export async function allGamesDescending() {
       .sort({ title: -1 })
       .lean()
     return allBoardgamesDesc
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// Get boardgame by id
+export async function gameById(id: string) {
+  try {
+    await connectToDatabase()
+    const game = await BoardGame.findById(id)
+    return game
   } catch (error) {
     console.error(error)
   }

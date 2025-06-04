@@ -5,7 +5,7 @@ export function BrowseTableRowSkeleton() {
         <div className='my-4 h-full w-full rounded bg-gray-100'></div>
       </td>
       <td className='pl-4'>
-        <div className='h-6 w-56 rounded bg-gray-100'></div>
+        <div className='h-6 w-72 rounded bg-gray-100'></div>
       </td>
     </tr>
   )

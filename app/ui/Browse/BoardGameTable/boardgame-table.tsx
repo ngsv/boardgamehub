@@ -66,12 +66,16 @@ export default function BoardGameTable() {
 
         <tbody>
           {boardgames.length > 0 &&
-            boardgames?.map(game => (
+            boardgames.map(game => (
               <tr
                 key={game._id}
                 className='border-b-2 first-of-type:rounded-t-xl last-of-type:border-none'
               >
-                <BoardGameTableItem title={game.title} image={game.image} />
+                <BoardGameTableItem
+                  id={game._id}
+                  title={game.title}
+                  image={game.image}
+                />
               </tr>
             ))}
         </tbody>
