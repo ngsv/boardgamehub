@@ -4,7 +4,6 @@ import { connectToDatabase } from '../mongoose'
 import { User as UserModel } from '../models/user'
 import { BoardGame } from '../models/boardgames'
 import { User } from '../definitions'
-import { connect } from 'http2'
 
 // Checks if a user already exists with that email address
 export async function getUserByEmail(

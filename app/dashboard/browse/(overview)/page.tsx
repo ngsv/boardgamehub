@@ -1,7 +1,7 @@
 import BoardGameTable from '@/app/ui/Browse/BoardGameTable/boardgame-table'
 
 export default async function Browse() {
-  await new Promise(resolve => setTimeout(resolve, 1000)) // simulate delay
+  await new Promise(resolve => setTimeout(resolve, 500)) // simulate delay
 
   return (
     <div>

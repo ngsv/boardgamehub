@@ -18,6 +18,7 @@ export default async function BoardGameList({ list }: BoardGameListProps) {
       {boardgames?.map(game => (
         <BoardGameItem
           key={game._id as string}
+          id={game._id as string}
           title={game.title}
           description={game.description}
           min_players={game.min_players}
