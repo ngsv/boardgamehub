@@ -44,15 +44,15 @@ export default function BoardGameTable() {
   }, [])
 
   return (
-    <div className=''>
-      <table className='w-full table-auto border-separate border-spacing-3 rounded-lg bg-slate-50'>
-        <thead>
+    <div className='overflow-hidden rounded-t-lg'>
+      <table className='w-full bg-slate-50'>
+        <thead className='h-11 bg-slate-100'>
           <tr className='w-full'>
-            <th></th>
-            <th className='pl-4'>
+            <th className='w-32'></th>
+            <th scope='col' className='pl-4'>
               <button
                 onClick={() => handleSort('title')}
-                className='flex text-lg font-medium hover:cursor-pointer hover:underline'
+                className='flex font-medium hover:cursor-pointer hover:underline'
               >
                 Title
                 {sortBy == 'title-asc' && (
@@ -67,7 +67,10 @@ export default function BoardGameTable() {
         <tbody>
           {boardgames.length > 0 &&
             boardgames?.map(game => (
-              <tr key={game._id}>
+              <tr
+                key={game._id}
+                className='border-b-2 first-of-type:rounded-t-xl last-of-type:border-none'
+              >
                 <BoardGameTableItem title={game.title} image={game.image} />
               </tr>
             ))}

@@ -11,16 +11,18 @@ export default function BoardGameTableItem({
 }: BoardGameTableItemProps) {
   return (
     <>
-      <td className='relative h-24 w-24'>
+      <td className='relative h-32 w-32'>
         <Image
           src={image}
           alt={`Image of ${title}`}
           fill
-          className='rounded-lg object-cover'
+          className='rounded-xl object-cover p-2'
         />
       </td>
       <td className='pl-4'>
-        <span className='hover:cursor-pointer hover:underline'>{title}</span>
+        <span className='font-medium hover:cursor-pointer hover:underline'>
+          {title}
+        </span>
       </td>
     </>
   )
