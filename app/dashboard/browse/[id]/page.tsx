@@ -50,6 +50,7 @@ export default async function GamePage(props: {
               ) : (
                 <span className='mb-1 flex'>
                   <ClockIcon className='w-3 lg:w-5' />: {game.min_playing_time}+
+                  min
                 </span>
               )}
               {game.max_age ? (

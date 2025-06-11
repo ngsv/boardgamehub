@@ -7,11 +7,10 @@ import { ClockIcon } from '@heroicons/react/24/outline'
 type BoardGameItemProps = {
   id: string
   title: string
-  description: string
   min_players: number
   max_players: number
   min_playing_time: number
-  max_playing_time: number
+  max_playing_time?: number
   min_age: number
   max_age: number
   image: string
@@ -51,7 +50,7 @@ export default function BoardGameItem({
           </span>
         ) : (
           <span className='flex'>
-            <ClockIcon className='w-3 lg:w-5' />: {min_playing_time}+
+            <ClockIcon className='w-3 lg:w-5' />: {min_playing_time}+ min
           </span>
         )}
         {max_age ? (

@@ -5,6 +5,7 @@ const boardGameSchema = new mongoose.Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     image: { type: String, required: true },
+    year_released: { type: Number, required: true },
     min_players: { type: Number, required: true },
     max_players: { type: Number },
     min_playing_time: { type: Number, required: true },

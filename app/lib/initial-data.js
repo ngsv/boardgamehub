@@ -38,7 +38,8 @@ const boardGames = [
     min_playing_time: 90,
     max_playing_time: 150,
     min_age: 14,
-    image: '/ark-nova.webp'
+    image: '/ark-nova.webp',
+    year_released: 2021
   },
   {
     title: 'Wingspan',
@@ -53,7 +54,8 @@ const boardGames = [
     min_playing_time: 40,
     max_playing_time: 70,
     min_age: 10,
-    image: '/wingspan.webp'
+    image: '/wingspan.webp',
+    year_released: 2019
   },
   {
     title: 'Everdell',
@@ -68,7 +70,8 @@ const boardGames = [
     min_playing_time: 40,
     max_playing_time: 80,
     min_age: 10,
-    image: '/everdell.webp'
+    image: '/everdell.webp',
+    year_released: 2018
   },
   {
     title: 'Food Chain Magnate',
@@ -79,7 +82,8 @@ const boardGames = [
     min_playing_time: 120,
     max_playing_time: 240,
     min_age: 14,
-    image: '/food-chain-magnate.webp'
+    image: '/food-chain-magnate.webp',
+    year_released: 2015
   },
   {
     title: 'Viticulture Essential Edition',
@@ -92,7 +96,8 @@ const boardGames = [
     min_playing_time: 45,
     max_playing_time: 90,
     min_age: 13,
-    image: '/viticulture-essential-edition.webp'
+    image: '/viticulture-essential-edition.webp',
+    year_released: 2015
   },
   {
     title: 'Azul',
@@ -103,7 +108,8 @@ const boardGames = [
     min_playing_time: 30,
     max_playing_time: 45,
     min_age: 8,
-    image: '/azul.webp'
+    image: '/azul.webp',
+    year_released: 2017
   },
   {
     title: 'Root',
@@ -116,7 +122,8 @@ const boardGames = [
     min_playing_time: 60,
     max_playing_time: 90,
     min_age: 10,
-    image: '/root.webp'
+    image: '/root.webp',
+    year_released: 2018
   },
   {
     title: 'Catan',
@@ -129,7 +136,8 @@ const boardGames = [
     min_playing_time: 60,
     max_playing_time: 120,
     min_age: 10,
-    image: '/catan.webp'
+    image: '/catan.webp',
+    year_released: 1995
   },
   {
     title: '7 Wonders',
@@ -142,7 +150,8 @@ const boardGames = [
     min_playing_time: 30,
     max_playing_time: 30,
     min_age: 10,
-    image: '/7-wonders.webp'
+    image: '/7-wonders.webp',
+    year_released: 2010
   },
   {
     title: 'Ticket to Ride',
@@ -156,7 +165,82 @@ const boardGames = [
     min_playing_time: 30,
     max_playing_time: 60,
     min_age: 8,
-    image: '/ticket-to-ride.webp'
+    image: '/ticket-to-ride.webp',
+    year_released: 2004
+  },
+  {
+    title: 'Dune',
+    description: `Imagine you can control the forces of a noble family, guild, or religious order on a barren planet which is the only source for the most valuable substance in the known universe.
+
+Imagine you can rewrite the script for one of the most famous science fiction books of all time. Welcome to the acclaimed 40-year-old board game which allows you to recreate the incredible world of Frank Herbert’s DUNE.
+
+In DUNE you will become the leader of one of six great factions. Each wishes to control the most valuable resource in the universe - melange, the mysterious spice only found at great cost on the planet DUNE. As Duke Leto Atreides says “All fades before melange. A handful of spice will buy a home on Tupile. It cannot be manufactured, it must be mined on Arrakis. It is unique and it has true geriatric properties.” And without melange space travel would be impossible. Only by ingesting the addictive drug can the Guild Steersman continue to experience visions of the future, enabling them to plot a safe path through hyperspace.
+
+Who will control DUNE? Become one of the characters and their forces from the book and . . . You decide!`,
+    min_players: 2,
+    max_players: 6,
+    min_playing_time: 120,
+    max_playing_time: 180,
+    min_age: 14,
+    image: '/dune.webp',
+    year_released: 2019
+  },
+  {
+    title: 'Decrypto',
+    description: `Players compete in two teams in Decrypto, with each trying to correctly interpret the coded messages presented to them by their teammates while cracking the codes they intercept from the opposing team.
+
+In more detail, each team has their own screen, and in this screen they tuck four cards in pockets numbered 1-4, letting everyone on the same team see the words on these cards while hiding the words from the opposing team. In the first round, each team does the following: One team member takes a code card that shows three of the digits 1-4 in some order, e.g., 4-2-1. They then give a coded message that their teammates must use to guess this code. For example, if the team's four words are "pig", "candy", "tent", and "son", then I might say "Sam-striped-pink" and hope that my teammates can correctly map those words to 4-2-1. If they guess correctly, great; if not, we receive a black mark of failure.
+
+Starting in the second round, a member of each team must again give a clue about their words to match a numbered code. If I get 2-4-3, I might now say, "sucker-prince-stake". The other team then attempts to guess our numbered code. If they're correct, they receive a white mark of success; if not, then my team must guess the number correctly or take a black mark of failure. (Guessing correctly does nothing except avoid failure and give the opposing team information about what our hidden words might be.)
+
+The rounds continue until a team collects either its second white mark (winning the game) or its second black mark (losing the game). Games typically last between 4-7 rounds. If neither team has won after eight rounds, then each team must attempt to guess the other team's words; whichever team guesses more words correctly wins.`,
+    min_players: 3,
+    max_players: 8,
+    min_playing_time: 15,
+    max_playing_time: 45,
+    min_age: 12,
+    image: '/decrypto.webp',
+    year_released: 2018
+  },
+  {
+    title: 'Expeditions',
+    description: `The sequel to Scythe sends players on a new adventure into Siberia, where a massive meteorite crashed near the Tunguska River, awakening ancient corruption. An expedition led by Dr. Tarkovsky ventures into the taiga to learn about the meteorite and its impact on the land. Itching for adventure, heroes from the war privately fund their own expeditions to Siberia, hoping to find artifacts, overcome challenges, and ultimately achieve glory. Expeditions has completely different mechanisms than Scythe, though the goal was to capture some of the same feelings that Scythe evokes, with a slightly darker, more supernatural theme.
+
+Expeditions is a competitive, card-driven, engine-building game of exploration. Play cards to gain power, guile, and unique worker abilities; move your mech to mysterious locations and gain cards found among the tiles; use workers, items, meteorites, and quests to enhance your mech; and use power and guile to vanquish corruption.`,
+    min_players: 1,
+    max_players: 5,
+    min_playing_time: 60,
+    max_playing_time: 90,
+    min_age: 14,
+    image: '/expeditions.webp',
+    year_released: 2023
+  },
+  {
+    title: 'Dixit',
+    description: `Each turn in Dixit, one player is the storyteller who chooses one of the six cards in their hand, then expresses an idea, with sounds or words, that is reflected on that card's image, and places the card face down on the playing surface. Each other player then selects the card that best matches that expression, and passes the selected card to the storyteller, face down.
+
+The storyteller shuffles all the cards together, then turns them over to reveal them. Each player other than the storyteller then secretly guesses which card belongs to the storyteller. If nobody or everybody guesses the correct card, the storyteller scores 0 points, and each other player scores 2 points. Otherwise, the storyteller and whoever found the correct answer score 3 points. Additionally, the non-storyteller players score 1 point for every vote received by their card.
+
+The game ends when the deck is empty or if a player has scored at least 30 points. In either case, the player with the most points wins.
+
+The Dixit base game and each expansion contain 84 cards, and the cards can be mixed together as desired.`,
+    min_players: 3,
+    max_players: 8,
+    min_playing_time: 30,
+    min_age: 8,
+    image: '/dixit.webp',
+    year_released: 2008
+  },
+  {
+    title: 'Carpe Diem',
+    description: `The players slip into the role of rich patricians in ancient Rome. Everyone is trying to build a lucrative city district to score as many prestige points as possible. The novel way to get to the individual buildings of a district combined with a large variety of score cards make for an unusual game with a large number of strategies. From the successful designer, Stefan Feld.`,
+    min_players: 2,
+    max_players: 4,
+    min_playing_time: 45,
+    max_playing_time: 75,
+    min_age: 10,
+    image: '/carpe-diem.webp',
+    year_released: 2018
   }
 ]
 
