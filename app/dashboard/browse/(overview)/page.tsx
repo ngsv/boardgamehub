@@ -1,9 +1,9 @@
 import BoardGameTable from '@/app/ui/Browse/BoardGameTable/boardgame-table'
 
-export const dynamic = 'force-dynamic' // Forces Next.js to show `loading.tsx`
+// export const dynamic = 'force-dynamic' // Forces Next.js to show `loading.tsx`
 
 export default async function Browse() {
-  await new Promise(resolve => setTimeout(resolve, 1000)) // simulate delay
+  // await new Promise(resolve => setTimeout(resolve, 1000)) // simulate delay
 
   return (
     <div>
@@ -12,3 +12,14 @@ export default async function Browse() {
     </div>
   )
 }
+
+// import { BrowseTableSkeleton } from '@/app/ui/skeletons'
+
+// export default function Loading() {
+//   return (
+//     <div>
+//       <h1 className='mb-5 text-3xl font-medium'>Browse</h1>
+//       <BrowseTableSkeleton />
+//     </div>
+//   )
+// }

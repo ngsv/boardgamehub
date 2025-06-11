@@ -12,7 +12,6 @@ export default async function GamePage(props: {
   const id = params.id
 
   const game = await gameById(id)
-  console.log(game)
 
   return (
     <div>
