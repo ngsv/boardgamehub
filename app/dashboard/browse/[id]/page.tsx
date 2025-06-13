@@ -66,7 +66,11 @@ export default async function GamePage(props: {
         <hr className='my-4 h-1 border-0 bg-gray-200'></hr>
         <h2 className='text-lg font-semibold'>Description</h2>
         <hr className='my-2 h-px border-0 bg-gray-200'></hr>
-        <p className=''>{game.description}</p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: game.description.replace(/\n/g, '<br>')
+          }}
+        ></p>
       </div>
     </div>
   )

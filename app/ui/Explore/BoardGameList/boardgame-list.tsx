@@ -20,7 +20,6 @@ export default async function BoardGameList({ list }: BoardGameListProps) {
           key={game._id as string}
           id={game._id as string}
           title={game.title}
-          description={game.description}
           min_players={game.min_players}
           max_players={game.max_players}
           min_playing_time={game.min_playing_time}
