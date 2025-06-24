@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 
 import type { BoardGame } from '@/app/lib/definitions'
@@ -8,12 +9,15 @@ import BoardGameTableItem from '../BoardGameTableItem/boardgame-table-item'
 import { BrowseTableSkeleton } from '../../skeletons'
 
 export default function BoardGameTable() {
+  const searchParams = useSearchParams()
+  const currentPage = searchParams.get('page') ?? 1
+
   const [boardgames, setBoardgames] = useState<BoardGame[]>([])
   const [sortBy, setSortBy] = useState('initial')
   const [loading, setLoading] = useState(true)
 
-  const initialFetch = async () => {
-    const res = await fetch('/api/games')
+  const fetchGames = async () => {
+    const res = await fetch(`/api/games?page=${currentPage}`)
     const data = await res.json()
     setBoardgames(data)
     setLoading(false)
@@ -48,8 +52,8 @@ export default function BoardGameTable() {
   }
 
   useEffect(() => {
-    initialFetch()
-  }, [])
+    fetchGames()
+  }, [currentPage])
 
   return (
     <>

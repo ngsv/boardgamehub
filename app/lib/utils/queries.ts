@@ -5,6 +5,7 @@ import { User as UserModel } from '../models/user'
 import { BoardGame } from '../models/boardgames'
 import { User } from '../definitions'
 
+// --- LOGIN AND REGISTRATION ---
 // Checks if a user already exists with that email address
 export async function getUserByEmail(
   email: string
@@ -81,6 +82,7 @@ export async function insertUser(formData: FormData) {
   }
 }
 
+// --- EXPLORE PAGE ---
 // Recently added board games
 export async function recentlyAddedGames() {
   try {
@@ -111,13 +113,29 @@ export async function staffPicks() {
   }
 }
 
+// --- BROWSE PAGE ---
 // All boardgames
 export async function allGames() {
   try {
     await connectToDatabase()
     const allBoardgames = await BoardGame.find({}).lean()
-
     return allBoardgames
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// Browse boardgames
+const GAMES_PER_PAGE = 10
+export async function browseGames(currentPage: number) {
+  try {
+    await connectToDatabase()
+    const offset = (currentPage - 1) * GAMES_PER_PAGE
+    const boardgames = await BoardGame.find({})
+      .lean()
+      .skip(offset)
+      .limit(GAMES_PER_PAGE)
+    return boardgames
   } catch (error) {
     console.error(error)
   }
@@ -153,6 +171,21 @@ export async function gameById(id: string) {
     await connectToDatabase()
     const game = await BoardGame.findById(id)
     return game
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// Get total number of boardgames
+export async function browsePages() {
+  try {
+    await connectToDatabase()
+    const count = await allGames()
+
+    if (!count) {
+      return 0
+    }
+    return Math.ceil(count.length / 10)
   } catch (error) {
     console.error(error)
   }
