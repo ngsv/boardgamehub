@@ -3,7 +3,6 @@ import { browseGames } from '@/app/lib/utils/queries'
 
 export async function GET(request: NextRequest) {
   const page = Number(request.nextUrl.searchParams.get('page'))
-  console.log(page)
   const games = await browseGames(page)
   return NextResponse.json(games)
 }

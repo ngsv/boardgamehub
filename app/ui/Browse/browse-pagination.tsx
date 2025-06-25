@@ -54,7 +54,7 @@ export default function BrowsePagination({
       </div>
 
       <PaginationArrow
-        href={createPageURL(currentPage - 1)}
+        href={createPageURL(currentPage + 1)}
         direction='right'
         isDisabled={currentPage >= totalPages}
       />

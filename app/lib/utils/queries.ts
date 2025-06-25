@@ -141,25 +141,33 @@ export async function browseGames(currentPage: number) {
   }
 }
 
-// All boardgames ascending title
-export async function allGamesAscending() {
+// Browse boardgames ascending title
+export async function browseGamesAscending(currentPage: number) {
   try {
     await connectToDatabase()
-    const allBoardgamesAsc = await BoardGame.find({}).sort({ title: 1 }).lean()
-    return allBoardgamesAsc
+    const offset = (currentPage - 1) * GAMES_PER_PAGE
+    const boardgamesAsc = await BoardGame.find({})
+      .sort({ title: 1 })
+      .lean()
+      .skip(offset)
+      .limit(GAMES_PER_PAGE)
+    return boardgamesAsc
   } catch (error) {
     console.error(error)
   }
 }
 
 // All boardgames descending title
-export async function allGamesDescending() {
+export async function browseGamesDescending(currentPage: number) {
   try {
     await connectToDatabase()
-    const allBoardgamesDesc = await BoardGame.find({})
+    const offset = (currentPage - 1) * GAMES_PER_PAGE
+    const boardgamesDesc = await BoardGame.find({})
       .sort({ title: -1 })
       .lean()
-    return allBoardgamesDesc
+      .skip(offset)
+      .limit(GAMES_PER_PAGE)
+    return boardgamesDesc
   } catch (error) {
     console.error(error)
   }

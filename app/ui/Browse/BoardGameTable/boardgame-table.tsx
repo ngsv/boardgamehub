@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 
@@ -13,29 +13,29 @@ export default function BoardGameTable() {
   const currentPage = searchParams.get('page') ?? 1
 
   const [boardgames, setBoardgames] = useState<BoardGame[]>([])
-  const [sortBy, setSortBy] = useState('initial')
+  const [sortBy, setSortBy] = useState('default')
   const [loading, setLoading] = useState(true)
 
-  const fetchGames = async () => {
+  const fetchGames = useCallback(async () => {
     const res = await fetch(`/api/games?page=${currentPage}`)
     const data = await res.json()
     setBoardgames(data)
     setLoading(false)
-  }
+  }, [currentPage])
 
-  const fetchGamesAsc = async () => {
-    const res = await fetch('/api/titles-asc')
+  const fetchGamesAsc = useCallback(async () => {
+    const res = await fetch(`/api/titles-asc?page=${currentPage}`)
     const data = await res.json()
     setBoardgames(data)
     setLoading(false)
-  }
+  }, [currentPage])
 
-  const fetchGamesDesc = async () => {
-    const res = await fetch('/api/titles-desc')
+  const fetchGamesDesc = useCallback(async () => {
+    const res = await fetch(`/api/titles-desc?page=${currentPage}`)
     const data = await res.json()
     setBoardgames(data)
     setLoading(false)
-  }
+  }, [currentPage])
 
   const handleSort = (sort: string) => {
     setLoading(true)
@@ -43,17 +43,23 @@ export default function BoardGameTable() {
     if (sort == 'title') {
       if (sortBy == 'title-asc') {
         setSortBy('title-desc')
-        fetchGamesDesc()
+        // fetchGamesDesc()
       } else {
         setSortBy('title-asc')
-        fetchGamesAsc()
+        // fetchGamesAsc()
       }
     }
   }
 
   useEffect(() => {
-    fetchGames()
-  }, [currentPage])
+    if (sortBy === 'default') {
+      fetchGames()
+    } else if (sortBy === 'title-asc') {
+      fetchGamesAsc()
+    } else if (sortBy === 'title-desc') {
+      fetchGamesDesc()
+    }
+  }, [sortBy, fetchGames, fetchGamesAsc, fetchGamesDesc])
 
   return (
     <>

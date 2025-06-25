@@ -2,10 +2,8 @@ import BoardGameTable from '@/app/ui/Browse/BoardGameTable/boardgame-table'
 import BrowsePagination from '@/app/ui/Browse/browse-pagination'
 import { browsePages } from '@/app/lib/utils/queries'
 
-export default async function Browse(props: {
-  params: Promise<{ page?: string }>
-}) {
-  const params = await props.params
+export default async function Browse() {
+  // const params = await props.params
   // const currentPage = Number(params?.page) || 1
   const totalPages = (await browsePages()) || 1
 
@@ -19,3 +17,7 @@ export default async function Browse(props: {
     </div>
   )
 }
+
+// props: {
+//   params: Promise<{ page?: string }>
+// }
