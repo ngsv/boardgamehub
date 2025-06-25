@@ -1,16 +1,24 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 
 import type { BoardGame } from '@/app/lib/definitions'
 import BoardGameTableItem from '../BoardGameTableItem/boardgame-table-item'
 import { BrowseTableSkeleton } from '../../skeletons'
 
-export default function BoardGameTable() {
+type BoardGameTableProps = {
+  totalPages: number
+}
+
+export default function BoardGameTable({ totalPages }: BoardGameTableProps) {
+  const router = useRouter()
   const searchParams = useSearchParams()
-  const currentPage = searchParams.get('page') ?? 1
+
+  const rawPage = Number(searchParams.get('page'))
+  const currentPage = rawPage >= 1 ? rawPage : 1
+  // const currentPage = searchParams.get('page') ?? 1
 
   const [boardgames, setBoardgames] = useState<BoardGame[]>([])
   const [sortBy, setSortBy] = useState('default')
@@ -43,14 +51,13 @@ export default function BoardGameTable() {
     if (sort == 'title') {
       if (sortBy == 'title-asc') {
         setSortBy('title-desc')
-        // fetchGamesDesc()
       } else {
         setSortBy('title-asc')
-        // fetchGamesAsc()
       }
     }
   }
 
+  // Sorting
   useEffect(() => {
     if (sortBy === 'default') {
       fetchGames()
@@ -60,6 +67,20 @@ export default function BoardGameTable() {
       fetchGamesDesc()
     }
   }, [sortBy, fetchGames, fetchGamesAsc, fetchGamesDesc])
+
+  // Redirect if page number is invalid in query params
+  useEffect(() => {
+    const rawPage = Number(searchParams.get('page'))
+    if (!rawPage || rawPage <= 0) {
+      const params = new URLSearchParams(searchParams)
+      params.set('page', '1')
+      router.replace(`?${params.toString()}`)
+    } else if (rawPage > totalPages) {
+      const params = new URLSearchParams(searchParams)
+      params.set('page', totalPages.toString())
+      router.replace(`?${params.toString()}`)
+    }
+  }, [searchParams, router, totalPages])
 
   return (
     <>
