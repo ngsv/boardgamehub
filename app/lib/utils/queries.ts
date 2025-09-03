@@ -88,7 +88,7 @@ export async function recentlyAddedGames() {
   try {
     await connectToDatabase()
     const recentGames = await BoardGame.find({})
-      .sort({ createdAt: -1 })
+      .sort({ createdAt: -1, _id: -1 }) // Since we seeded the database with initial documents, they all have the same createdAt timestamp. Adding _id: -1 includes a timestamp of when the document was created
       .limit(5)
       .lean()
 
@@ -103,7 +103,7 @@ export async function staffPicks() {
   try {
     await connectToDatabase()
     const staffPicks = await BoardGame.find({})
-      .sort({ createdAt: 1 })
+      .sort({ createdAt: 1, _id: 1 })
       .limit(5)
       .lean()
 

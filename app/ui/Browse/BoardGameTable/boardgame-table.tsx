@@ -18,10 +18,10 @@ export default function BoardGameTable({ totalPages }: BoardGameTableProps) {
 
   const rawPage = Number(searchParams.get('page'))
   const currentPage = rawPage >= 1 ? rawPage : 1
-  // const currentPage = searchParams.get('page') ?? 1
+  const sort = searchParams.get('sort')
+  const order = searchParams.get('order')
 
   const [boardgames, setBoardgames] = useState<BoardGame[]>([])
-  const [sortBy, setSortBy] = useState('default')
   const [loading, setLoading] = useState(true)
 
   const fetchGames = useCallback(async () => {
@@ -47,26 +47,36 @@ export default function BoardGameTable({ totalPages }: BoardGameTableProps) {
 
   const handleSort = (sort: string) => {
     setLoading(true)
+    const params = new URLSearchParams(searchParams)
+    const order = params.get('order')
+    params.set('sort', sort)
 
     if (sort == 'title') {
-      if (sortBy == 'title-asc') {
-        setSortBy('title-desc')
+      if (order === 'asc') {
+        params.set('order', 'desc')
       } else {
-        setSortBy('title-asc')
+        params.set('order', 'asc')
       }
     }
+
+    params.set('page', '1')
+    router.push(`?${params.toString()}`)
   }
 
   // Sorting
   useEffect(() => {
-    if (sortBy === 'default') {
-      fetchGames()
-    } else if (sortBy === 'title-asc') {
+    setLoading(true)
+    const sort = searchParams.get('sort')
+    const order = searchParams.get('order')
+    if (sort === 'title' && order === 'asc') {
       fetchGamesAsc()
-    } else if (sortBy === 'title-desc') {
+    } else if (sort === 'title' && order === 'desc') {
       fetchGamesDesc()
+    } else if (!sort && !order) {
+      fetchGames()
     }
-  }, [sortBy, fetchGames, fetchGamesAsc, fetchGamesDesc])
+    // setLoading(false)
+  }, [searchParams, fetchGames, fetchGamesAsc, fetchGamesDesc])
 
   // Redirect if page number is invalid in query params
   useEffect(() => {
@@ -98,10 +108,10 @@ export default function BoardGameTable({ totalPages }: BoardGameTableProps) {
                     className='flex font-medium hover:cursor-pointer hover:underline'
                   >
                     Title
-                    {sortBy == 'title-asc' && (
+                    {sort === 'title' && order === 'asc' && (
                       <ArrowDownIcon className='ml-1 w-4' />
                     )}
-                    {sortBy == 'title-desc' && (
+                    {sort === 'title' && order === 'desc' && (
                       <ArrowUpIcon className='ml-1 w-4' />
                     )}
                   </button>
