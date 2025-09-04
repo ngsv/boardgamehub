@@ -1,4 +1,10 @@
+import { Metadata } from 'next'
+
 import BoardGameList from '../ui/Explore/BoardGameList/boardgame-list'
+
+export const metadata: Metadata = {
+  title: 'Explore'
+}
 
 export default async function Dashboard() {
   return (

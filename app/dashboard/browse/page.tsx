@@ -1,7 +1,13 @@
 import { Suspense } from 'react'
+import { Metadata } from 'next'
+
 import BoardGameTable from '@/app/ui/Browse/BoardGameTable/boardgame-table'
 import BrowsePagination from '@/app/ui/Browse/browse-pagination'
 import { browsePages } from '@/app/lib/utils/queries'
+
+export const metadata: Metadata = {
+  title: 'Browse'
+}
 
 export default async function Browse() {
   const totalPages = (await browsePages()) || 1

@@ -184,7 +184,7 @@ export async function gameById(id: string) {
   }
 }
 
-// Get total number of boardgames
+// Get total number of pages of boardgames
 export async function browsePages() {
   try {
     await connectToDatabase()
