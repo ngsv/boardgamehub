@@ -13,7 +13,7 @@ export default async function Search() {
       <h1 className='text-3xl font-medium'>Search</h1>
       <SearchBar />
 
-      <Suspense>
+      <Suspense fallback={<div>Searching...</div>}>
         <SearchTable games={games} />
       </Suspense>
     </div>
