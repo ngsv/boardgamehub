@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 import { BoardGame } from '@/app/lib/definitions'
@@ -17,18 +17,18 @@ export default function SearchTable({ games }: SearchTableProps) {
   const searchParams = useSearchParams()
   const query = searchParams.get('query')?.toLowerCase() || ''
 
-  const handleFilter = () => {
+  const handleFilter = useCallback(() => {
     const filteredGames = games.filter(game =>
       game.title.toLowerCase().includes(query)
     )
     setResults(filteredGames)
-  }
+  }, [query, games])
 
   useEffect(() => {
     if (query !== '') {
       handleFilter()
     }
-  }, [query])
+  }, [query, handleFilter])
 
   return (
     <table className='mt-10 w-full bg-slate-50'>

@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import SearchBar from '@/app/ui/Search/search'
 import SearchTable from '@/app/ui/Search/search-table'
 
@@ -10,7 +12,10 @@ export default async function Search() {
     <div>
       <h1 className='text-3xl font-medium'>Search</h1>
       <SearchBar />
-      <SearchTable games={games} />
+
+      <Suspense>
+        <SearchTable games={games} />
+      </Suspense>
     </div>
   )
 }
