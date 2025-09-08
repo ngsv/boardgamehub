@@ -11,7 +11,9 @@ export default async function Search() {
   return (
     <div>
       <h1 className='text-3xl font-medium'>Search</h1>
-      <SearchBar />
+      <Suspense fallback={<div>Searching...</div>}>
+        <SearchBar />
+      </Suspense>
 
       <Suspense fallback={<div>Searching...</div>}>
         <SearchTable games={games} />
