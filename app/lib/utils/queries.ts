@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import { connectToDatabase } from '../mongoose'
 import { User as UserModel } from '../models/user'
 import { BoardGame } from '../models/boardgames'
-import { User } from '../definitions'
+import { User, BoardGame as BoardGameType } from '../definitions'
 
 // --- LOGIN AND REGISTRATION ---
 // Checks if a user already exists with that email address
@@ -194,6 +194,40 @@ export async function browsePages() {
       return 0
     }
     return Math.ceil(count.length / 10)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// --- SEARCH PAGE ---
+// Get all boardgames
+export async function searchAllGames(): Promise<BoardGameType[]> {
+  try {
+    await connectToDatabase()
+    const rawGames = await BoardGame.find({})
+
+    const games = rawGames.map(game => {
+      const plain = game.toObject()
+      return {
+        ...plain,
+        _id: game._id.toString(),
+        createdAt: game.createdAt?.toISOString(),
+        updatedAt: game.updatedAt?.toISOString()
+      }
+    })
+
+    return games
+  } catch (error) {
+    console.error(error)
+    return []
+  }
+}
+
+export async function searchTitle(title: string) {
+  try {
+    await connectToDatabase()
+    const games = await BoardGame.find({ title: title })
+    return games
   } catch (error) {
     console.error(error)
   }

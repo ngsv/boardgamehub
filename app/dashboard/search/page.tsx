@@ -1,13 +1,16 @@
-import { Metadata } from 'next'
+import SearchBar from '@/app/ui/Search/search'
+import SearchTable from '@/app/ui/Search/search-table'
 
-export const metadata: Metadata = {
-  title: 'Search'
-}
+import { searchAllGames } from '@/app/lib/utils/queries'
 
 export default async function Search() {
+  const games = await searchAllGames()
+
   return (
     <div>
       <h1 className='text-3xl font-medium'>Search</h1>
+      <SearchBar />
+      <SearchTable games={games} />
     </div>
   )
 }

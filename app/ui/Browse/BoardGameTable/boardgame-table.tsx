@@ -75,7 +75,6 @@ export default function BoardGameTable({ totalPages }: BoardGameTableProps) {
     } else if (!sort && !order) {
       fetchGames()
     }
-    // setLoading(false)
   }, [searchParams, fetchGames, fetchGamesAsc, fetchGamesDesc])
 
   // Redirect if page number is invalid in query params
