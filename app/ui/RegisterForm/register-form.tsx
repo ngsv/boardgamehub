@@ -33,7 +33,6 @@ export default function RegisterForm() {
       </button>
       <form
         action={formAction}
-        method='POST'
         className={`flex w-full justify-center text-sm sm:text-base ${state.success && 'hidden'}`}
       >
         <div className='flex w-9/12 flex-col space-y-3 pt-8'>
