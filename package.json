@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "seed-users": "node app/seed/seed-users.js"
   },
   "dependencies": {
@@ -36,6 +36,6 @@
     "typescript": "^6.0.3",
     "vercel": "^41.2.1"
   },
-  "packageManager": "pnpm@10.10.0+sha256.fa0f513aa8191764d2b6b432420788c270f07b4f999099b65bb2010eec702a30",
+  "packageManager": "pnpm@10.33.2",
   "type": "module"
 }
