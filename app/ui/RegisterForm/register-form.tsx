@@ -2,13 +2,13 @@
 
 import { useActionState } from 'react'
 import {
-  ArrowRightIcon,
   ExclamationCircleIcon,
   ArrowUturnLeftIcon
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
 import { registerUser } from '@/app/lib/actions'
+import Button from '../form-button'
 import RegisterOverlay from './register-overlay'
 
 import { roboto } from '@/app/ui/fonts'
@@ -106,16 +106,13 @@ export default function RegisterForm() {
             </div>
           </div>
           <div>
-            <button
+            <Button
+              buttonText='Register'
               className={clsx(
-                'mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800',
                 isPending && 'opacity-50 aria-disabled:cursor-not-allowed'
               )}
               aria-disabled={isPending}
-            >
-              <div className='flex items-center'>Register</div>
-              <ArrowRightIcon className='w-5' />
-            </button>
+            ></Button>
           </div>
           {/* Error Message */}
           <div

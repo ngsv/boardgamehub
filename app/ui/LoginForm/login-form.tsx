@@ -4,16 +4,16 @@ import { useSearchParams } from 'next/navigation'
 import { useActionState } from 'react'
 import {
   ExclamationCircleIcon,
-  ArrowRightIcon,
   AtSymbolIcon,
   KeyIcon,
   ArrowUturnLeftIcon
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
-import { roboto } from '@/app/ui/fonts'
 import { authenticate } from '@/app/lib/actions'
+import Button from '../form-button'
 
+import { roboto } from '@/app/ui/fonts'
 import styles from '@/app/ui/LoginForm/login-form.module.css'
 
 export default function LoginForm() {
@@ -72,16 +72,13 @@ export default function LoginForm() {
           </div>
           <div>
             <input type='hidden' name='redirectTo' value={callbackUrl} />
-            <button
+            <Button
+              buttonText='Log In'
               className={clsx(
-                'mt-6 flex h-11 w-full justify-between rounded-lg bg-orange-900 px-4 text-white hover:bg-orange-800',
-                isPending ? 'opacity-50 aria-disabled:cursor-not-allowed' : ''
+                isPending && 'opacity-50 aria-disabled:cursor-not-allowed'
               )}
               aria-disabled={isPending}
-            >
-              <div className='flex items-center'>Log In</div>
-              <ArrowRightIcon className='w-5' />
-            </button>
+            ></Button>
           </div>
           {/* Error message */}
           <div
