@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
-import { registerUser } from '@/actions'
+import { registerUser } from '@/app/lib/actions'
 import RegisterOverlay from './register-overlay'
 
 import { roboto } from '@/app/ui/fonts'

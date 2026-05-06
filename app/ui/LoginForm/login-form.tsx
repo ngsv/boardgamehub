@@ -12,7 +12,7 @@ import {
 import clsx from 'clsx'
 
 import { roboto } from '@/app/ui/fonts'
-import { authenticate } from '@/actions'
+import { authenticate } from '@/app/lib/actions'
 
 import styles from '@/app/ui/LoginForm/login-form.module.css'
 

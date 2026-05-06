@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth'
+import NextAuth, { CredentialsSignin } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import { z } from 'zod'
 import bcrypt from 'bcryptjs'
@@ -9,7 +9,7 @@ import { User as UserModel } from '@/app/lib/models/user'
 import { authConfig } from './auth.config'
 
 // Finds user by email
-async function getUser(email: string): Promise<User | null | undefined> {
+async function getUser(email: string): Promise<User | null> {
   try {
     await connectToDatabase()
 
