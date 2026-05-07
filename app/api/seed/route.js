@@ -4,17 +4,23 @@ import { seedBoardGames } from './boardgames'
 
 export async function POST(req) {
   try {
+    if (process.env.NODE_ENV !== 'development') {
+      return NextResponse.json(
+        {
+          error: 'Seeding is only allowed in local development.'
+        },
+        { status: 403 }
+      )
+    }
+
     const { type } = await req.json()
-    let result
     if (type === 'users') {
-      result = await seedUsers()
+      return NextResponse.json(await seedUsers())
     } else if (type === 'boardgames') {
-      result = await seedBoardGames()
+      return NextResponse.json(await seedBoardGames())
     } else {
       return NextResponse.json({ error: 'Invalid seed type.' }, { status: 400 })
     }
-
-    return NextResponse.json(result)
   } catch (error) {
     console.error('❌ Seeding error:', error)
     return NextResponse.json({ error: error.message }, { status: 500 })
