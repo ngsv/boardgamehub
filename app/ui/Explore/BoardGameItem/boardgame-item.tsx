@@ -33,8 +33,9 @@ export default function BoardGameItem({
         <div className='relative h-24 w-full md:h-28 lg:h-40 xl:h-60'>
           <Image
             src={image}
-            alt={`Image of ${image}`}
+            alt={`Image of ${title} board game`}
             fill
+            sizes='(min-width: 1280px) 100vw, 600px'
             className='rounded-lg object-cover'
           />
         </div>
