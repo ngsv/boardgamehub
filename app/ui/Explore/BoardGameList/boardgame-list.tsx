@@ -1,5 +1,5 @@
 import BoardGameItem from '../BoardGameItem/boardgame-item'
-import { recentlyAddedGames, staffPicks } from '@/app/lib/utils/queries'
+import { recentlyAddedGames, staffPicks } from '@/app/lib/queries'
 
 type BoardGameListProps = {
   list: string

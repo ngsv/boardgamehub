@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { allGames } from '@/app/lib/utils/queries'
+import { allGames } from '@/app/lib/queries'
 
 export async function GET() {
   const games = await allGames()

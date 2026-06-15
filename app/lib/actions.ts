@@ -5,7 +5,7 @@ import { AuthError } from 'next-auth'
 
 import { signIn } from '@/auth'
 
-import { getUserByEmail, getUserByUsername, insertUser } from './utils/queries'
+import { getUserByEmail, getUserByUsername, insertUser } from './queries'
 
 export async function authenticate(
   prevState: string | undefined,

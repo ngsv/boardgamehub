@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 
 import { BoardGame } from '@/app/lib/definitions'
 import SearchTableItem from './search-table-item'
-import { searchAllGames } from '@/app/lib/utils/queries'
+import { searchAllGames } from '@/app/lib/queries'
 
 type SearchTableProps = {
   games: Awaited<ReturnType<typeof searchAllGames>>

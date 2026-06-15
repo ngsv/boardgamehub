@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { UserGroupIcon } from '@heroicons/react/24/solid'
 import { ClockIcon } from '@heroicons/react/24/outline'
 
-import { gameById } from '@/app/lib/utils/queries'
+import { gameById } from '@/app/lib/queries'
 import Breadcrumbs from '@/app/ui/breadcrumbs'
 
 export default async function GamePage(props: {

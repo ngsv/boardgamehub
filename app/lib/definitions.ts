@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongodb'
+// import { Types } from 'mongoose'
 
 export type User = {
   _id: ObjectId // MongoDB auto-generated
@@ -16,11 +17,11 @@ export type BoardGame = {
   image: string
   year_released: number
   min_players: number
-  max_players: number
+  max_players?: number
   min_playing_time: number
-  max_playing_time: number
+  max_playing_time?: number
   min_age: number
   max_age?: number
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
 }

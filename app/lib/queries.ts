@@ -1,9 +1,10 @@
 import { z } from 'zod'
 import bcrypt from 'bcryptjs'
-import { connectToDatabase } from '../mongoose'
-import { User as UserModel } from '../models/user'
-import { BoardGame } from '../models/boardgames'
-import { User, BoardGame as BoardGameType } from '../definitions'
+import { connectToDatabase } from './mongoose'
+import { User as UserModel } from './models/user'
+import { BoardGame } from './models/boardgames'
+import { User, BoardGame as BoardGameType } from './definitions'
+import { normalize } from '@/app/lib/utils/helper'
 
 // --- LOGIN AND REGISTRATION ---
 // Checks if a user already exists with that email address
@@ -62,7 +63,7 @@ export async function insertUser(formData: FormData) {
 
     // Insert user into DB if credentials are valid
     if (parsedCredentials.success) {
-      const hashedpassword = await bcrypt.hash(
+      const hashedPassword = await bcrypt.hash(
         filteredObject.password as string,
         10
       )
@@ -71,7 +72,7 @@ export async function insertUser(formData: FormData) {
         last_name: filteredObject.lastName,
         username: filteredObject.username,
         email: filteredObject.email,
-        password: hashedpassword
+        password: hashedPassword
       }
       console.log(newUser)
       await UserModel.insertOne({ ...newUser })
@@ -114,7 +115,7 @@ export async function staffPicks() {
 }
 
 // --- BROWSE PAGE ---
-// All boardgames
+// All boardgames (used below by function browsePages())
 export async function allGames() {
   try {
     await connectToDatabase()
@@ -127,17 +128,20 @@ export async function allGames() {
 
 // Browse boardgames
 const GAMES_PER_PAGE = 10
-export async function browseGames(currentPage: number) {
+export async function browseGames(
+  currentPage: number
+): Promise<BoardGameType[]> {
   try {
     await connectToDatabase()
     const offset = (currentPage - 1) * GAMES_PER_PAGE
     const boardgames = await BoardGame.find({})
-      .lean()
+      .lean<BoardGameType[]>()
       .skip(offset)
       .limit(GAMES_PER_PAGE)
-    return boardgames
+    return boardgames.map(normalize)
   } catch (error) {
     console.error(error)
+    return []
   }
 }
 
@@ -148,12 +152,13 @@ export async function browseGamesAscending(currentPage: number) {
     const offset = (currentPage - 1) * GAMES_PER_PAGE
     const boardgamesAsc = await BoardGame.find({})
       .sort({ title: 1 })
-      .lean()
+      .lean<BoardGameType[]>()
       .skip(offset)
       .limit(GAMES_PER_PAGE)
-    return boardgamesAsc
+    return boardgamesAsc.map(normalize)
   } catch (error) {
     console.error(error)
+    return []
   }
 }
 
@@ -164,12 +169,13 @@ export async function browseGamesDescending(currentPage: number) {
     const offset = (currentPage - 1) * GAMES_PER_PAGE
     const boardgamesDesc = await BoardGame.find({})
       .sort({ title: -1 })
-      .lean()
+      .lean<BoardGameType[]>()
       .skip(offset)
       .limit(GAMES_PER_PAGE)
-    return boardgamesDesc
+    return boardgamesDesc.map(normalize)
   } catch (error) {
     console.error(error)
+    return []
   }
 }
 
