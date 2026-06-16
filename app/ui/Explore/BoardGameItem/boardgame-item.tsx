@@ -37,6 +37,7 @@ export default function BoardGameItem({
             fill
             sizes='(min-width: 1280px) 100vw, 600px'
             className='rounded-lg object-cover'
+            priority
           />
         </div>
         <h2 className='mt-2 font-medium'>{title}</h2>

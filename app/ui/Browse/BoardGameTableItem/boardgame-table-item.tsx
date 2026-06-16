@@ -5,12 +5,14 @@ type BoardGameTableItemProps = {
   id: string
   title: string
   image: string
+  index: number
 }
 
 export default function BoardGameTableItem({
   id,
   title,
-  image
+  image,
+  index
 }: BoardGameTableItemProps) {
   return (
     <>
@@ -20,6 +22,8 @@ export default function BoardGameTableItem({
           alt={`Image of ${title}`}
           fill
           className='rounded-xl object-cover p-2'
+          sizes='128px'
+          priority={index < 7} // give priority only to the first seven images
         />
       </td>
       <td className='pl-4'>

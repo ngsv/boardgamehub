@@ -5,7 +5,6 @@ import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 
 import type { BoardGame } from '@/app/lib/definitions'
 import BoardGameTableItem from '../BoardGameTableItem/boardgame-table-item'
-import { BrowseTableSkeleton } from '../../skeletons'
 
 type BoardGameTableProps = {
   boardgames: BoardGame[]
@@ -64,7 +63,7 @@ export default function BoardGameTable({
 
           <tbody>
             {boardgames.length > 0 &&
-              boardgames.map(game => (
+              boardgames.map((game, index) => (
                 <tr
                   key={game._id.toString()}
                   className='border-b-2 first-of-type:rounded-t-xl last-of-type:border-none'
@@ -73,6 +72,7 @@ export default function BoardGameTable({
                     id={game._id.toString()}
                     title={game.title}
                     image={game.image}
+                    index={index}
                   />
                 </tr>
               ))}
