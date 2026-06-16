@@ -4,8 +4,8 @@ export function BrowseTableRowSkeleton() {
       <td className='h-32 w-32'>
         <div className='my-4 h-full w-full rounded bg-gray-100'></div>
       </td>
-      <td className='pl-4'>
-        <div className='h-6 w-72 rounded bg-gray-100'></div>
+      <td className='p-4'>
+        <div className='h-6 w-full rounded bg-gray-100'></div>
       </td>
     </tr>
   )

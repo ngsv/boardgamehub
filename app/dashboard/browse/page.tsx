@@ -10,6 +10,7 @@ import {
   browseGamesAscending,
   browseGamesDescending
 } from '@/app/lib/queries'
+import { BrowseTableSkeleton } from '@/app/ui/skeletons'
 
 export const metadata: Metadata = {
   title: 'Browse'
@@ -41,7 +42,7 @@ export default async function Browse(props: {
     <div>
       <h1 className='mb-5 text-3xl font-medium'>Browse</h1>
       <div className='flex h-full flex-col justify-between'>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<BrowseTableSkeleton />}>
           <BoardGameTable boardgames={boardgames} sort={sort} order={order} />
           <BrowsePagination totalPages={totalPages} />
         </Suspense>
