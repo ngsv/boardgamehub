@@ -13,6 +13,7 @@ export default function SearchBar() {
     if (term) {
       params.set('query', term)
     } else {
+      // If search field is empty, delete params
       params.delete('query')
     }
     replace(`${pathname}?${params.toString()}`)
@@ -23,12 +24,14 @@ export default function SearchBar() {
       <label htmlFor='search' className='hidden'>
         Search
       </label>
+      {/* Default value ensures the search field is populated when the page loads (e.g. for sharing and on page reloads) */}
       <input
         id='search'
         className='h-10 w-full rounded border px-3 pl-10 focus:border-black focus:outline-none'
         onChange={e => handleChange(e.target.value)}
         defaultValue={searchParams.get('query')?.toString()}
       ></input>
+      {/* Magnifying glass icon */}
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 24 24'
