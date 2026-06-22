@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import SearchBar from '@/app/ui/Search/search'
 import SearchTable from '@/app/ui/Search/search-table'
 
